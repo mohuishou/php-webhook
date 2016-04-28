@@ -1,0 +1,11 @@
+{
+  "user":"www-data",
+  "userGroup":"www-data",
+  "__config__":[
+    {
+      "path":"default",
+      "token":"test",
+      "name":"test"
+    }
+  ]
+}
