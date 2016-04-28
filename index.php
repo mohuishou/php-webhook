@@ -5,8 +5,18 @@ $config=json_decode(file_get_contents('config.json'),true);
 $get_json=file_get_contents('php://input');
 $json_arr=json_decode($get_json, true);
 
+//兼容gitosc
+if(!$json_arr){
+    $a=substr($get_json,5);
+    $get_json=urldecode($a);
+    $json_arr=json_decode($get_json,true);
+    $json_arr['token']=$json_arr['password'];//gitosc采用的password
+}
+
+$now_time=date('Y-m-d H:m:s');
 if (empty($json_arr['token'])) {
-    exit('error request');
+    Log::errorLog("all","不存在token  \r\n 详细信息：$get_json \r\n ");
+    exit();
 }
 foreach ($config['__config__'] as $k => $v){
     if($json_arr['token']==$v['token']){
@@ -19,9 +29,11 @@ foreach ($config['__config__'] as $k => $v){
             exit();
         }
 
-        $now_time=date('Y-m-d H:m:s');
+
         $log_content="【 $now_time 】：".$v['name']."拉取成功 \r\n 详细信息： $get_json \r\n ";
         Log::newLog($v['name'],$log_content);
 
     }
 }
+
+Log::errorLog("all","没有与token {$json_arr['token']} 对应的配置文件 \r\n ");
