@@ -9,6 +9,13 @@
 date_default_timezone_set('Asia/Chongqing');
 class Log{
 
+    /**
+     * 新建一个日志
+     * @author mohuishou<1@lailin.xyz>
+     * @param $project_name 项目名称
+     * @param null $content 日志内容
+     * @param null $file_name 文件名称
+     */
     public static function newLog($project_name,$content=null,$file_name=null){
         $now=date('Y-m');
         if($file_name==null) $file_name=$now;
@@ -24,6 +31,13 @@ class Log{
     }
 
 
+    /**
+     * 新建一个错误日志
+     * @author mohuishou<1@lailin.xyz>
+     * @param $project_name 项目名称
+     * @param null $content 日志内容
+     * @param null $file_name 文件名称
+     */
     public static function errorLog($project_name,$content,$file_name=null){
         $now=date('Y-m');
         if($file_name==null) $file_name=$now;
