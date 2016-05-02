@@ -1,7 +1,19 @@
 <?php
+
+//获取git的url
+$config_name=$_GET['config'];
+if(!file_exists('./config'.$config_name.'config.php')){
+    Log::errorLog("all","不存在项目: {$config_name}  \r\n ");//报错配置文件不存在
+    exit();
+}
+
+if(!file_exists('./config'.$config_name.'.lock')){
+    
+}
+
 require_once "log.class.php";
 //获取配置
-$config=json_decode(file_get_contents('config.json'),true);
+//$config=json_decode(file_get_contents('config.json'),true);
 $get_json=file_get_contents('php://input');
 $json_arr=json_decode($get_json, true);
 
