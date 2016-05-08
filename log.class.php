@@ -24,7 +24,7 @@ class Log{
             mkdir(dirname($path), 0777,true); //目录不存在创建目录
         }
         $file = fopen($path, "a");
-        $now_time=date('Y-m-d H:m:s');
+        $now_time=date('Y-m-d H:i:s');
         if($content==null) $content="【 $now_time 】：$project_name 拉取成功 \r\n";
         fwrite($file, $content);
         fclose($file);
@@ -46,7 +46,7 @@ class Log{
             mkdir(dirname($path), 0777,true); //目录不存在创建目录
         }
         $file = fopen($path, "a");
-        $now_time=date('Y-m-d H:m:s');
+        $now_time=date('Y-i-d H:m:s');
         fwrite($file,"【 $now_time 】:" . $content);
         fclose($file);
     }

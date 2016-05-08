@@ -44,7 +44,7 @@ foreach ($config['__config__'] as $k => $v){
 
         $log_content="【 $now_time 】：".$v['name']."拉取成功 \r\n 详细信息： $get_json \r\n ";
         Log::newLog($v['name'],$log_content);
-
+        exit();
     }
 }
 
